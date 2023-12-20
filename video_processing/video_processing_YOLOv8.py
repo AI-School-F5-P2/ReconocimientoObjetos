@@ -43,7 +43,7 @@ def process_video_with_model(video_path, model):
 
         if success:
             #Run YOLOv8 inference on the frame
-            results = model(frame)
+            results = model(frame, save_crop=True)
 
             #Detects the labels of the objects in the frame
             detected_labels.append(results[0].boxes.cls.tolist())
@@ -141,7 +141,7 @@ def get_logo_report(labels_list, detected_labels, duration, frame_rate):
 
 def main():
 
-    youtube_url = 'https://www.youtube.com/watch?v=IXFFhtD8lhk'
+    youtube_url = 'https://www.youtube.com/watch?v=-qNOS_FfWNM'
 
     output_folder = config('VIDEO_FOLDER')
    

@@ -41,8 +41,9 @@ def main():
    if video_url and valid_youtube_link(video_url):
       st.success("The link is valid.")
       st.video(video_url)
-      
-      if st.button('Get Report'):
+            
+      if st.button(label=':sparkles::sparkles::sparkles::sparkles::sparkles: Get Report and Save in MongoDB :sparkles::sparkles::sparkles::sparkles::sparkles:',
+                   type='primary', use_container_width=True):
          output_folder = config('VIDEO_FOLDER')
          video_filename = download_video(video_url, output_folder)
          video_path = f"{output_folder}/{video_filename}"
@@ -57,10 +58,10 @@ def main():
          print(info_dict)
 
          st.title('Video')
-         st.markdown(f"**Video name:** {info_dict['video_filename']}")
-         st.markdown(f"**Video duration:** {info_dict['duration']:.2f} seconds")
-         st.markdown(f"**Video frame rate:** {info_dict['frame_rate']:.2f} fps")
-         st.markdown(f"**Video total frames:** {info_dict['total_frames']:.2f} frames")
+         st.markdown(f"**Name:** {info_dict['video_filename']}")
+         st.markdown(f"**Duration:** {info_dict['duration']:.2f} seconds")
+         st.markdown(f"**Frame rate:** {info_dict['frame_rate']:.2f} fps")
+         st.markdown(f"**Total frames:** {info_dict['total_frames']:.2f} frames")
 
          st.title('Detections')
          df = pd.DataFrame(info_dict['detections'])
